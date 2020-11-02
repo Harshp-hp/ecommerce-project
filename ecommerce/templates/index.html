@@ -1,0 +1,448 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+{% load cart %}
+{% load filter %}
+
+<style>
+body {
+	padding-top:px;
+
+	background-size: cover;
+	background-position: center;
+	color: black;
+}
+.jumbotron{
+	color: white;
+    background-color: black;
+	/*background-size: cover;
+	background-position: center;*/
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: center;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+}
+.content{
+	text-align: center;
+	padding-top: 25%;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+}
+h1 {
+	font-weight: 700;
+	font-size: 5em;
+}
+html {
+	height: 100%;
+}
+hr {
+	width: 400px;
+	border-top: 1px solid #f8f8f8;
+	border-bottom: 1px solid rgba(0,0,0,0.2)
+}
+.shop-services.section {
+	padding: 100px 0 20px 0;
+	background: #fff;
+
+}
+.shop-services.home{
+	padding:60px 0;
+	background:#F6F7FB;
+}
+.shop-services .single-service {
+	position: relative;
+	padding-left: 65px;
+}
+.shop-services .single-service i {
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #333;
+	background: transparent;
+	border-radius: 100%;
+	display: block;
+	font-size: 32px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.shop-services .single-service h4 {
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+	line-height: 22px;
+	color: #333;
+}
+.shop-services .single-service p {
+	color: #898989;
+	line-height: 28px;
+	font-size:14px;
+}
+
+.carousel-inner {
+	width: 100%;
+	height: 610px;
+}
+
+  .site-footer
+{
+  background-color:#26272b;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+.site-footer hr.small
+{
+  margin:20px 0
+}
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  color:#737373;
+}
+.site-footer a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block
+}
+.footer-links a
+{
+  color:#737373
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links.inline li
+{
+  display:inline-block
+}
+.site-footer .social-icons
+{
+  text-align:right
+}
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+.copyright-text
+{
+  margin:0
+}
+@media (max-width:991px)
+{
+  .site-footer [class^=col-]
+  {
+    margin-bottom:30px
+  }
+}
+@media (max-width:767px)
+{
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}
+.social-icons
+{
+  padding-left:0;
+  margin-bottom:0;
+  list-style:none
+}
+.social-icons li
+{
+  display:inline-block;
+  margin-bottom:4px
+}
+.social-icons li.title
+{
+  margin-right:15px;
+  text-transform:uppercase;
+  color:#96a2b2;
+  font-weight:700;
+  font-size:13px
+}
+.social-icons a{
+  background-color:#eceeef;
+  color:#818a91;
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  margin-right:8px;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+{
+  color:#fff;
+  background-color:#29aafe
+}
+.social-icons.size-sm a
+{
+  line-height:34px;
+  height:34px;
+  width:34px;
+  font-size:14px
+}
+.social-icons a.facebook:hover
+{
+  background-color:#3b5998
+}
+.social-icons a.twitter:hover
+{
+  background-color:#00aced
+}
+.social-icons a.linkedin:hover
+{
+  background-color:#007bb6
+}
+.social-icons a.dribbble:hover
+{
+  background-color:#ea4c89
+}
+@media (max-width:767px)
+{
+  .social-icons li.title
+  {
+    display:block;
+    margin-right:0;
+    font-weight:600
+  }
+}
+
+</style>
+
+  <br>
+<div class="container">
+<div class="jumbotron">
+  <h1><i class="fa fa-camera-retro" aria-hidden="true"></i> This is a E-Shop</h1>
+  <p>Explore what you want!! </p>
+  <p><a class="btn btn-info btn-lg" href="#" role="button"><i class="fa fa-info" aria-hidden="true"></i> Explore </a></p>
+</div>
+    </div>
+
+<!-- end of CONTAINER -->
+
+      <hr>
+
+<h1 class="display-4 text-center"><strong> Product Area</strong> </h1>
+<hr>
+<div class="container-fluid mt-3">
+<div class="row">
+    <!---Filter--->
+    <div class="col-lg-2 mx-auto">
+        <div class="list-group">
+            <a href="/" class="list-group-item list-group-item-action">All Products</a>
+            {% for category in categories %}
+            <a href="/?category={{category.id}}" class="list-group-item list-group-item-action">{{category.name}}</a>
+
+{% endfor %}
+        </div>
+    </div>
+
+    <div id="products" class="col-lg-10 ma-auto">
+<div class ="row mx-auto">
+    {% for product in product %}
+
+        <div class="card mx-auto mb-3" id="{{product.id}}" style="width: 18rem;">
+          <img src="{{product.image.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">{{product.name}}</h5>
+            <p class="card-text text-center"><strong>{{product.price|currency}}</strong></p>
+
+            <div class="card-footer no-gutters p-0">
+                {% if product|is_in_cart:request.session.cart %}
+
+                  <div class="row">
+                      <form action="/#{{product.id}}" class="col-2" method="post">
+                       {% csrf_token %}
+                          <input hidden type="text" name='product' value='{{product.id}}'>
+                          <input hidden type="text" name='remove' value='True'>
+                          <input type="submit" value="- " class="btn btn-block btn-success form-control">
+                      </form>
+                <div class="text-center col">{{product|cart_quantity:request.session.cart}}</div>
+                      <form action="/#{{product.id}}" class="col-2 " method="post">
+                       {% csrf_token %}
+                          <input hidden type="text" name='product' value='{{product.id}}'>
+                          <input type="submit" value="+ " class="btn btn-block btn-success">
+                      </form>
+            </div>
+                {% else %}
+                <form  action="/#{{product.id}}" method="POST" class="btn-block">
+                {% csrf_token %}
+                <input hidden  type="text" name ="product" value='{{product.id}}'}>
+                <input type="submit" value="Add to cart" class="float-right btn btn-light border form-control">
+            </form>
+                {% endif %}
+          </div>
+
+        </div>
+        </div>
+{% endfor %}
+    </div>
+
+
+</div>
+    </div>
+    </div>
+<hr>
+<div class="container">
+<div class="card text-center">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special Offer</h5>
+    <p class="card-text">With supporting brand below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-info"> Shop Now </a>
+  </div>
+  <div class="card-footer text-muted">
+    2 days left
+  </div>
+</div>
+    </div>
+
+<hr>
+<section class="shop-services section home">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-12">
+          <!-- Start Single Service -->
+          <div class="single-service">
+            <i class="fa fa-shipping-fast">
+
+            </i>
+            <h4>Free shipping</h4>
+            <p>Orders over $100</p>
+          </div>
+          <!-- End Single Service -->
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+          <!-- Start Single Service -->
+          <div class="single-service">
+            <i class="ti-reload"></i>
+            <h4>Free Return</h4>
+            <p>Within 30 days returns</p>
+          </div>
+          <!-- End Single Service -->
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+          <!-- Start Single Service -->
+          <div class="single-service">
+            <i class="ti-lock"></i>
+            <h4>Sucure Payment</h4>
+            <p>100% secure payment</p>
+          </div>
+          <!-- End Single Service -->
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+          <!-- Start Single Service -->
+          <div class="single-service">
+            <i class="fa fa-price"></i>
+            <h4>Best Price</h4>
+            <p>Guaranteed price</p>
+          </div>
+          <!-- End Single Service -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<hr>
+  <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.           </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Categories</h6>
+            <ul class="footer-links">
+              <li><a href="#">Shoes</a></li>
+               <li><a href="#">Men's Shoes</a></li>
+               <li><a href="#"> Women Shoes</a></li>
+               <li><a href="#">Kids Shoes</a></li>
+              <li><a href="#">Other </a></li>
+
+
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Contribute</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+         <a href="#">mi__harsh</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
+{% endblock %}
+
+

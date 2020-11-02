@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="p-4 m-4">
+        <div class="col-lg-5 mx-auto border rounded pt-4">
+                            <div class="alert alert-light border rounder"> Create An Account</div>
+
+            <form action="/signup" method="POST">
+                {% csrf_token %}
+                <!---for email--->
+                <div class="form-group">
+            <label for="exampleInputEmail1">First Name</label>
+            <input required name="firstname" type="text" placeholder="Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Last Name</label>
+            <input required type="text" name="lastName" placeholder="Lastname" class="form-control" id="exampleInputPassword1">
+          </div>
+                <div class="form-group">
+            <label for="exampleInputPassword1">Phone</label>
+            <input required type="Phone" name="Phone" placeholder="phone" class="form-control" id="exampleInputPassword1">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input required type="email" Name="email" placeholder="example@gmail.com" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input required type="password" name="password" placeholder="**********" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-info mx-auto">Create An Acccount</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
